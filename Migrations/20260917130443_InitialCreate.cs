@@ -71,6 +71,8 @@ namespace EnozomTask.Migrations
                 name: "TripStops",
                 columns: table => new
                 {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     TripId = table.Column<int>(type: "int", nullable: false),
                     StationId = table.Column<int>(type: "int", nullable: false),
                     Time = table.Column<TimeSpan>(type: "time(6)", nullable: false),
@@ -78,7 +80,7 @@ namespace EnozomTask.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TripStops", x => new { x.TripId, x.StationId });
+                    table.PrimaryKey("PK_TripStops", x => x.Id);
                     table.ForeignKey(
                         name: "FK_TripStops_Stations_StationId",
                         column: x => x.StationId,
@@ -131,28 +133,29 @@ namespace EnozomTask.Migrations
 
             migrationBuilder.InsertData(
                 table: "TripStops",
-                columns: new[] { "StationId", "TripId", "StopOrder", "Time" },
+                columns: new[] { "Id", "StationId", "StopOrder", "Time", "TripId" },
                 values: new object[,]
                 {
-                    { 1, 1, 1, new TimeSpan(0, 7, 0, 0, 0) },
-                    { 5, 1, 2, new TimeSpan(0, 9, 0, 0, 0) },
-                    { 1, 2, 1, new TimeSpan(0, 7, 30, 0, 0) },
-                    { 3, 2, 2, new TimeSpan(0, 8, 30, 0, 0) },
-                    { 4, 2, 3, new TimeSpan(0, 9, 30, 0, 0) },
-                    { 5, 2, 4, new TimeSpan(0, 10, 30, 0, 0) },
-                    { 1, 3, 1, new TimeSpan(0, 9, 0, 0, 0) },
-                    { 3, 3, 2, new TimeSpan(0, 10, 15, 0, 0) },
-                    { 5, 3, 3, new TimeSpan(0, 11, 30, 0, 0) },
-                    { 1, 4, 2, new TimeSpan(0, 7, 0, 0, 0) },
-                    { 5, 4, 1, new TimeSpan(0, 9, 0, 0, 0) },
-                    { 1, 5, 5, new TimeSpan(0, 7, 30, 0, 0) },
-                    { 2, 5, 4, new TimeSpan(0, 7, 30, 0, 0) },
-                    { 3, 5, 3, new TimeSpan(0, 8, 30, 0, 0) },
-                    { 4, 5, 2, new TimeSpan(0, 9, 30, 0, 0) },
-                    { 5, 5, 1, new TimeSpan(0, 10, 30, 0, 0) },
-                    { 1, 6, 3, new TimeSpan(0, 9, 0, 0, 0) },
-                    { 3, 6, 2, new TimeSpan(0, 10, 15, 0, 0) },
-                    { 5, 6, 1, new TimeSpan(0, 11, 30, 0, 0) }
+                    { 1, 1, 1, new TimeSpan(0, 7, 0, 0, 0), 1 },
+                    { 2, 5, 2, new TimeSpan(0, 9, 0, 0, 0), 1 },
+                    { 3, 1, 1, new TimeSpan(0, 7, 30, 0, 0), 2 },
+                    { 4, 3, 2, new TimeSpan(0, 8, 30, 0, 0), 2 },
+                    { 5, 4, 3, new TimeSpan(0, 9, 30, 0, 0), 2 },
+                    { 6, 5, 4, new TimeSpan(0, 10, 30, 0, 0), 2 },
+                    { 7, 1, 1, new TimeSpan(0, 9, 0, 0, 0), 3 },
+                    { 8, 3, 2, new TimeSpan(0, 10, 15, 0, 0), 3 },
+                    { 9, 5, 3, new TimeSpan(0, 11, 30, 0, 0), 3 },
+                    { 10, 5, 1, new TimeSpan(0, 7, 0, 0, 0), 4 },
+                    { 11, 5, 5, new TimeSpan(0, 9, 0, 0, 0), 4 },
+                    { 12, 5, 1, new TimeSpan(0, 10, 30, 0, 0), 5 },
+                    { 13, 4, 2, new TimeSpan(0, 9, 30, 0, 0), 5 },
+                    { 14, 3, 3, new TimeSpan(0, 8, 30, 0, 0), 5 },
+                    { 15, 2, 4, new TimeSpan(0, 7, 30, 0, 0), 5 },
+                    { 16, 1, 5, new TimeSpan(0, 7, 30, 0, 0), 5 },
+                    { 17, 5, 6, new TimeSpan(0, 7, 30, 0, 0), 5 },
+                    { 18, 5, 1, new TimeSpan(0, 11, 30, 0, 0), 6 },
+                    { 19, 3, 2, new TimeSpan(0, 10, 15, 0, 0), 6 },
+                    { 20, 5, 3, new TimeSpan(0, 9, 0, 0, 0), 6 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -164,6 +167,11 @@ namespace EnozomTask.Migrations
                 name: "IX_TripStops_StationId",
                 table: "TripStops",
                 column: "StationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TripStops_TripId",
+                table: "TripStops",
+                column: "TripId");
         }
 
         /// <inheritdoc />

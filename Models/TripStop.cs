@@ -2,6 +2,8 @@ namespace EnozomTask.Models;
 
 public class TripStop
 {
+    public int Id { get; set; }
+
     public int TripId { get; set; }
     public Trip Trip { get; set; } = null!;
 

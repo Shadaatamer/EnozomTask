@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EnozomTask.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260917101229_InitialCreate")]
+    [Migration("20260917130443_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -121,8 +121,11 @@ namespace EnozomTask.Migrations
 
             modelBuilder.Entity("EnozomTask.Models.TripStop", b =>
                 {
-                    b.Property<int>("TripId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("StationId")
                         .HasColumnType("int");
@@ -133,145 +136,177 @@ namespace EnozomTask.Migrations
                     b.Property<TimeSpan>("Time")
                         .HasColumnType("time(6)");
 
-                    b.HasKey("TripId", "StationId");
+                    b.Property<int>("TripId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("StationId");
+
+                    b.HasIndex("TripId");
 
                     b.ToTable("TripStops");
 
                     b.HasData(
                         new
                         {
-                            TripId = 1,
+                            Id = 1,
                             StationId = 1,
                             StopOrder = 1,
-                            Time = new TimeSpan(0, 7, 0, 0, 0)
+                            Time = new TimeSpan(0, 7, 0, 0, 0),
+                            TripId = 1
                         },
                         new
                         {
-                            TripId = 1,
+                            Id = 2,
                             StationId = 5,
                             StopOrder = 2,
-                            Time = new TimeSpan(0, 9, 0, 0, 0)
+                            Time = new TimeSpan(0, 9, 0, 0, 0),
+                            TripId = 1
                         },
                         new
                         {
-                            TripId = 2,
+                            Id = 3,
                             StationId = 1,
                             StopOrder = 1,
-                            Time = new TimeSpan(0, 7, 30, 0, 0)
+                            Time = new TimeSpan(0, 7, 30, 0, 0),
+                            TripId = 2
                         },
                         new
                         {
-                            TripId = 2,
+                            Id = 4,
                             StationId = 3,
                             StopOrder = 2,
-                            Time = new TimeSpan(0, 8, 30, 0, 0)
+                            Time = new TimeSpan(0, 8, 30, 0, 0),
+                            TripId = 2
                         },
                         new
                         {
-                            TripId = 2,
+                            Id = 5,
                             StationId = 4,
                             StopOrder = 3,
-                            Time = new TimeSpan(0, 9, 30, 0, 0)
+                            Time = new TimeSpan(0, 9, 30, 0, 0),
+                            TripId = 2
                         },
                         new
                         {
-                            TripId = 2,
+                            Id = 6,
                             StationId = 5,
                             StopOrder = 4,
-                            Time = new TimeSpan(0, 10, 30, 0, 0)
+                            Time = new TimeSpan(0, 10, 30, 0, 0),
+                            TripId = 2
                         },
                         new
                         {
-                            TripId = 3,
+                            Id = 7,
                             StationId = 1,
                             StopOrder = 1,
-                            Time = new TimeSpan(0, 9, 0, 0, 0)
+                            Time = new TimeSpan(0, 9, 0, 0, 0),
+                            TripId = 3
                         },
                         new
                         {
-                            TripId = 3,
+                            Id = 8,
                             StationId = 3,
                             StopOrder = 2,
-                            Time = new TimeSpan(0, 10, 15, 0, 0)
+                            Time = new TimeSpan(0, 10, 15, 0, 0),
+                            TripId = 3
                         },
                         new
                         {
-                            TripId = 3,
+                            Id = 9,
                             StationId = 5,
                             StopOrder = 3,
-                            Time = new TimeSpan(0, 11, 30, 0, 0)
+                            Time = new TimeSpan(0, 11, 30, 0, 0),
+                            TripId = 3
                         },
                         new
                         {
-                            TripId = 4,
+                            Id = 10,
                             StationId = 5,
                             StopOrder = 1,
-                            Time = new TimeSpan(0, 9, 0, 0, 0)
+                            Time = new TimeSpan(0, 7, 0, 0, 0),
+                            TripId = 4
                         },
                         new
                         {
-                            TripId = 4,
-                            StationId = 1,
-                            StopOrder = 2,
-                            Time = new TimeSpan(0, 7, 0, 0, 0)
+                            Id = 11,
+                            StationId = 5,
+                            StopOrder = 5,
+                            Time = new TimeSpan(0, 9, 0, 0, 0),
+                            TripId = 4
                         },
                         new
                         {
-                            TripId = 5,
+                            Id = 12,
                             StationId = 5,
                             StopOrder = 1,
-                            Time = new TimeSpan(0, 10, 30, 0, 0)
+                            Time = new TimeSpan(0, 10, 30, 0, 0),
+                            TripId = 5
                         },
                         new
                         {
-                            TripId = 5,
+                            Id = 13,
                             StationId = 4,
                             StopOrder = 2,
-                            Time = new TimeSpan(0, 9, 30, 0, 0)
+                            Time = new TimeSpan(0, 9, 30, 0, 0),
+                            TripId = 5
                         },
                         new
                         {
-                            TripId = 5,
+                            Id = 14,
                             StationId = 3,
                             StopOrder = 3,
-                            Time = new TimeSpan(0, 8, 30, 0, 0)
+                            Time = new TimeSpan(0, 8, 30, 0, 0),
+                            TripId = 5
                         },
                         new
                         {
-                            TripId = 5,
+                            Id = 15,
                             StationId = 2,
                             StopOrder = 4,
-                            Time = new TimeSpan(0, 7, 30, 0, 0)
+                            Time = new TimeSpan(0, 7, 30, 0, 0),
+                            TripId = 5
                         },
                         new
                         {
-                            TripId = 5,
+                            Id = 16,
                             StationId = 1,
                             StopOrder = 5,
-                            Time = new TimeSpan(0, 7, 30, 0, 0)
+                            Time = new TimeSpan(0, 7, 30, 0, 0),
+                            TripId = 5
                         },
                         new
                         {
-                            TripId = 6,
+                            Id = 17,
+                            StationId = 5,
+                            StopOrder = 6,
+                            Time = new TimeSpan(0, 7, 30, 0, 0),
+                            TripId = 5
+                        },
+                        new
+                        {
+                            Id = 18,
                             StationId = 5,
                             StopOrder = 1,
-                            Time = new TimeSpan(0, 11, 30, 0, 0)
+                            Time = new TimeSpan(0, 11, 30, 0, 0),
+                            TripId = 6
                         },
                         new
                         {
-                            TripId = 6,
+                            Id = 19,
                             StationId = 3,
                             StopOrder = 2,
-                            Time = new TimeSpan(0, 10, 15, 0, 0)
+                            Time = new TimeSpan(0, 10, 15, 0, 0),
+                            TripId = 6
                         },
                         new
                         {
-                            TripId = 6,
-                            StationId = 1,
+                            Id = 20,
+                            StationId = 5,
                             StopOrder = 3,
-                            Time = new TimeSpan(0, 9, 0, 0, 0)
+                            Time = new TimeSpan(0, 9, 0, 0, 0),
+                            TripId = 6
                         });
                 });
 

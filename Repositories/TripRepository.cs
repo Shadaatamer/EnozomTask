@@ -17,10 +17,7 @@ public class TripRepository : ITripRepository
     public async Task<List<TripDto>> SearchTrips(string from, string to)
     {
         return await _context.Trips
-        .Where(t =>
-                from == to ?
-                 t.TripStops.Any(s => s.Station.Name == from && s.StopOrder == 1)
-                 : t.TripStops.Any(fromStop => fromStop.Station.Name == from &&
+        .Where(t => t.TripStops.Any(fromStop => fromStop.Station.Name == from &&
                     t.TripStops.Any(toStop =>
                         toStop.Station.Name == to &&
                         fromStop.StopOrder < toStop.StopOrder
