@@ -1,4 +1,4 @@
-namespace EnozomTask.DTOs;
+namespace EnozomTask.Application.DTO;
 
 public class TripDto
 {

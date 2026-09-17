@@ -1,9 +1,6 @@
-using EnozomTask.DTOs;
-using EnozomTask.Models;
+using EnozomTask.Application.DTO;
 
-namespace enzomtask.Services;
-
-
+namespace EnozomTask.Application.Services;
 
 public interface ITripService
 {

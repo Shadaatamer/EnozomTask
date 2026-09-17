@@ -1,6 +1,7 @@
-using EnozomTask.DTOs;
 
-namespace EnozomTask.Reposiotries;
+using EnozomTask.Application.DTO;
+
+namespace EnozomTask.Application.Repositories;
 
 public interface ITripRepository
 {

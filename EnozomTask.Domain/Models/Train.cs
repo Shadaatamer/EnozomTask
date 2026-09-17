@@ -1,6 +1,5 @@
-using EnozomTask.Models;
 
-namespace enozomtask.Models;
+namespace EnozomTask.Domain.Models;
 
 public class Train
 {

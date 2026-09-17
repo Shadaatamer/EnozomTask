@@ -1,9 +1,10 @@
-using EnozomTask.Data;
-using EnozomTask.DTOs;
-using EnozomTask.Reposiotries;
+
+using EnozomTask.Application.DTO;
+using EnozomTask.Application.Repositories;
+using EnozomTask.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace EnozomTask.Repositories;
+namespace EnozomTask.Infrastructure.Repositories;
 
 public class TripRepository : ITripRepository
 {

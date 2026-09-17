@@ -16,4 +16,15 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="EnozomTask.Application\EnozomTask.Application.csproj" />
+    <ProjectReference Include="EnozomTask.Infrastructure\EnozomTask.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="EnozomTask.Domain\**\*.cs" />
+    <Compile Remove="EnozomTask.Application\**\*.cs" />
+    <Compile Remove="EnozomTask.Infrastructure\**\*.cs" />
+  </ItemGroup>
+
 </Project>

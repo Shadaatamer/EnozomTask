@@ -1,6 +1,6 @@
-using enozomtask.Models;
 
-namespace EnozomTask.Models;
+
+namespace EnozomTask.Domain.Models;
 
 public class Trip
 {

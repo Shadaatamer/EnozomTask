@@ -1,8 +1,7 @@
-using EnozomTask.Data;
-using EnozomTask.Reposiotries;
-using EnozomTask.Repositories;
-using EnozomTask.Services;
-using enzomtask.Services;
+using EnozomTask.Application.Repositories;
+using EnozomTask.Application.Services;
+using EnozomTask.Infrastructure.Data;
+using EnozomTask.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

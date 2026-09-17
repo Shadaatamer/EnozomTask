@@ -1,9 +1,7 @@
-using EnozomTask.DTOs;
-using EnozomTask.Models;
-using EnozomTask.Reposiotries;
-using enzomtask.Services;
+using EnozomTask.Application.DTO;
+using EnozomTask.Application.Repositories;
 
-namespace EnozomTask.Services;
+namespace EnozomTask.Application.Services;
 
 public class TripService : ITripService
 {

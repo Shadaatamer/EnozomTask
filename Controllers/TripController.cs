@@ -1,7 +1,7 @@
-using enzomtask.Services;
+using EnozomTask.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CnozomTask.Contollers;
+namespace EnozomTask.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

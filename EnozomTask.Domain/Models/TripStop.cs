@@ -1,4 +1,6 @@
-namespace EnozomTask.Models;
+using EnozomTask.Domain.Models;
+
+namespace EnozomTask.Domain.Models;
 
 public class TripStop
 {
