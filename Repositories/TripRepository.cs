@@ -1,5 +1,5 @@
 using EnozomTask.Data;
-using EnozomTask.Models;
+using EnozomTask.DTOs;
 using EnozomTask.Reposiotries;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,16 +14,26 @@ public class TripRepository : ITripRepository
         _context = context;
     }
 
-    public async Task<List<Trip>> SearchTrips(string from, string to)
+    public async Task<List<TripDto>> SearchTrips(string from, string to)
     {
         return await _context.Trips
-            .Include(t => t.Train)
-            .Include(t => t.TripStops)
-                .ThenInclude(ts => ts.Station)
-            .Where(t =>
-                t.TripStops.Any(s => s.Station.Name == from) &&
-                t.TripStops.Any(s => s.Station.Name == to))
+        .Where(t =>
+                from == to ?
+                 t.TripStops.Any(s => s.Station.Name == from && s.StopOrder == 1)
+                 : t.TripStops.Any(fromStop => fromStop.Station.Name == from &&
+                    t.TripStops.Any(toStop =>
+                        toStop.Station.Name == to &&
+                        fromStop.StopOrder < toStop.StopOrder
+                    )
+                )
+            )
+            .Select(t => new TripDto
+            {
+                TripNumber = t.TripNumber,
+                TrainName = t.Train.Name
+            })
             .AsNoTracking()
             .ToListAsync();
     }
+
 }

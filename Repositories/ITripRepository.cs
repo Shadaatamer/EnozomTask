@@ -1,10 +1,10 @@
-using EnozomTask.Models;
+using EnozomTask.DTOs;
 
 namespace EnozomTask.Reposiotries;
 
 public interface ITripRepository
 {
-    Task<List<Trip>> SearchTrips(string from, string to);
+    Task<List<TripDto>> SearchTrips(string from, string to);
 }
 
 
